@@ -8,3 +8,6 @@ tests/.build/
 
 # Panel build output. Reproducible with `npm run build:panel`.
 ui-dist/
+
+# Release output (scripts/release.mjs)
+dist-packages/

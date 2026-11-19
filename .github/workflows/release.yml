@@ -1,0 +1,30 @@
+name: Release
+
+# 构建本插件 → 打包 → 发 GitHub Release。
+#
+# 真正的步骤在注册仓库的复用工作流里（PiWork-Registry/.github/workflows/
+# plugin-release.yml）：装依赖、构建、`scripts/release.mjs` 打包并生成单条目
+# index.json、gh release create 上传 zip + index.json。改发布流程只改那一处。
+#
+# 发版：
+#   1. 改 manifest.json 的 version
+#   2. 提交并推送 tag `v<version>`
+#   3. （或 Actions → Release → Run workflow，tag 由 manifest 版本决定）
+#
+# 产物约定（registry 依赖它）：每个 Release 都带
+#   <id>-<version>.zip + index.json（条目里的 url 指向本 Release，绝对地址）
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    uses: PiWorkAgent/PiWork-Registry/.github/workflows/plugin-release.yml@main
+    permissions:
+      contents: write
