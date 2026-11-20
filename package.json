@@ -14,7 +14,7 @@
     "release": "node scripts/release.mjs"
   },
   "dependencies": {
-    "@pi/plugin-sdk": "^0.1.0",
+    "@pi/plugin-sdk": "npm:@weiqun789/plugin-sdk@^0.1.0",
     "chrono-node": "^2.10.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
